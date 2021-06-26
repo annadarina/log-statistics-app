@@ -1,0 +1,92 @@
+[
+  {
+    "datetime": "2016-09-20 16:23:10,994",
+    "severity": "info",
+    "message": "Some info message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:12,994",
+    "severity": "warning",
+    "message": "Some warning message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:14,994",
+    "severity": "error",
+    "message": "Some error message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:10,994",
+    "severity": "info",
+    "message": "Some info message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:12,994",
+    "severity": "warning",
+    "message": "Some warning message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:14,994",
+    "severity": "error",
+    "message": "Some error message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:10,994",
+    "severity": "info",
+    "message": "Some info message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:12,994",
+    "severity": "warning",
+    "message": "Some warning message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:14,994",
+    "severity": "error",
+    "message": "Some error message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:10,994",
+    "severity": "info",
+    "message": "Some info message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:12,994",
+    "severity": "warning",
+    "message": "Some warning message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:14,994",
+    "severity": "error",
+    "message": "Some error message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:10,994",
+    "severity": "info",
+    "message": "Some info message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:12,994",
+    "severity": "warning",
+    "message": "Some warning message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:14,994",
+    "severity": "error",
+    "message": "Some error message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:10,994",
+    "severity": "info",
+    "message": "Some info message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:12,994",
+    "severity": "warning",
+    "message": "Some warning message"
+  },
+  {
+    "datetime": "2016-09-20 16:23:14,994",
+    "severity": "error",
+    "message": "Some error message"
+  }
+]
