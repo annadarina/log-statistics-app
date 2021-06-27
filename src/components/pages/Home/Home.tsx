@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import Logs from '../../ui/Logs';
 import Statistics from '../../ui/Statistics';
@@ -24,9 +24,6 @@ const Home: React.FC = () => {
   /** Styles */
   const classes = useStyles();
 
-  /** Statistics hook */
-  const [statistics, setStatistics] = useState<TStatistics>({ error: 0, info: 0, warning: 0 });
-
   /** Logs from state */
   const logs = useSelector(selectLogs);
   /** Error */
@@ -36,8 +33,8 @@ const Home: React.FC = () => {
 
   /** Fetching list of logs with 1 sec interval */
   useEffect(() => {
-    let size = 0;
-    const fetchInterval = 500;
+    let size = 1;
+    const fetchInterval = 1000;
 
     const interval = setInterval(() => {
       dispatch(getLogsList(size++));
@@ -48,23 +45,29 @@ const Home: React.FC = () => {
     };
   }, [dispatch]);
 
-  /** Update statistics */
-  useEffect(() => {
-    if (logs.length) {
-      setStatistics({
-        info: logs.filter((log: ILogItem) => log.severity === 'info').length,
-        warning: logs.filter((log: ILogItem) => log.severity === 'warning').length,
-        error: logs.filter((log: ILogItem) => log.severity === 'error').length
-      });
+  /** Statistics counter */
+  const memoizedStatistics: TStatistics = useMemo(() => {
+    if (!logs.length || error) {
+      return {
+        info: 0,
+        warning: 0,
+        error: 0,
+      };
     }
-  }, [logs]);
+
+    return {
+      info: logs.filter((log: ILogItem) => log.severity === 'info').length,
+      warning: logs.filter((log: ILogItem) => log.severity === 'warning').length,
+      error: logs.filter((log: ILogItem) => log.severity === 'error').length
+    };
+  }, [logs, error]);
 
   /** Logs table */
   const logsMarkup = logs.length ? <Logs logs={logs}/> : 'loading...'
 
   return (
     <>
-      <Statistics statistics={statistics}/>
+      <Statistics statistics={memoizedStatistics}/>
       <Grid className={classes.contentWrapper}>
         {!error ? logsMarkup : 'Oops, something happened at our side. Please retry later...'}
       </Grid>
