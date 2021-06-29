@@ -49,8 +49,6 @@ const Home: React.FC = () => {
   /** Logs table */
   const logsMarkup = logs.length ? <Logs logs={logs}/> : 'loading...'
 
-  console.log(123)
-
   return (
     <>
       <Statistics statistics={statistics}/>
