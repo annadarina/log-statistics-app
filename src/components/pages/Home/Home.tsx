@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 import Logs from '../../ui/Logs';
 import Statistics from '../../ui/Statistics';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectLogs, selectLogsError } from '../../../store/logs/logs.selector';
+import { selectLogs, selectLogsError, selectStatistics } from '../../../store/logs/logs.selector';
 import { getLogsList } from '../../../store/logs/logs.effects';
-import { ILogItem, TStatistics } from '../../../interfaces';
 
 /** Component styles */
 const useStyles = makeStyles({
@@ -26,6 +25,8 @@ const Home: React.FC = () => {
 
   /** Logs from state */
   const logs = useSelector(selectLogs);
+  /** Statistics selector */
+  const statistics = useSelector(selectStatistics);
   /** Error */
   const error = useSelector(selectLogsError);
   /** Dispatch */
@@ -45,29 +46,14 @@ const Home: React.FC = () => {
     };
   }, [dispatch]);
 
-  /** Statistics counter */
-  const memoizedStatistics: TStatistics = useMemo(() => {
-    if (!logs.length || error) {
-      return {
-        info: 0,
-        warning: 0,
-        error: 0,
-      };
-    }
-
-    return {
-      info: logs.filter((log: ILogItem) => log.severity === 'info').length,
-      warning: logs.filter((log: ILogItem) => log.severity === 'warning').length,
-      error: logs.filter((log: ILogItem) => log.severity === 'error').length
-    };
-  }, [logs, error]);
-
   /** Logs table */
   const logsMarkup = logs.length ? <Logs logs={logs}/> : 'loading...'
 
+  console.log(123)
+
   return (
     <>
-      <Statistics statistics={memoizedStatistics}/>
+      <Statistics statistics={statistics}/>
       <Grid className={classes.contentWrapper}>
         {!error ? logsMarkup : 'Oops, something happened at our side. Please retry later...'}
       </Grid>
